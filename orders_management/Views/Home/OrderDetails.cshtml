@@ -1,0 +1,82 @@
+﻿@model test_task.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Информация о заказе";
+}
+
+<style>
+    dt {
+        text-align: left;
+        margin: 0 auto;
+        height: 52px;
+    }
+
+    dd {
+        text-align: right;
+        height: 52px;
+    }
+
+    header {
+        max-width: auto;
+        width: 100%;
+    }
+
+    h1 {
+        color: coral;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 400px;
+    }
+
+    .custom-back {
+        transition: color 0.3s ease;
+        padding: 0px;
+        height: 30px;
+    }
+
+        .custom-back:hover {
+            color: coral;
+        }
+</style>
+
+<div class="container mt-5">
+    <header class="mb-4">
+        <div>
+            <h1 class="mb-0">ИНФОРМАЦИЯ</h1>
+            <h2>О ЗАКАЗЕ</h2>
+        </div>
+        <a class="btn custom-back" asp-area="" asp-controller="Home" asp-action="List">
+            Назад к списку заказов
+        </a>
+    </header>
+
+    <div>
+        <dl class="row">
+            <dt class="col-sm-4 border-bottom">Номер заказа:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.ID</dd>
+
+            <dt class="col-sm-4 border-bottom">Город отправителя:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.SenderCity</dd>
+
+            <dt class="col-sm-4 border-bottom">Адрес отправителя:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.SenderAddress</dd>
+
+            <dt class="col-sm-4 border-bottom">Город получателя:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.RecipientCity</dd>
+
+            <dt class="col-sm-4 border-bottom">Адрес получателя:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.RecipientAddress</dd>
+
+            <dt class="col-sm-4 border-bottom">Вес груза:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.Weight @Model.Weight_Measure</dd>
+
+            <dt class="col-sm-4 border-bottom">Дата забора груза:</dt>
+            <dd class="col-sm-8 border-bottom">@Model.PickupDate.ToString("yyyy-MM-dd")</dd>
+        </dl>
+    </div>
+</div>

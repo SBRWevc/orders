@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Список заказов";
+}
+
+<style>
+    h1 {
+        color: coral;
+    }
+
+    .table-btn {
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .table-btn:hover {
+            background-color: coral;
+            color: white;
+        }
+
+    .custom-back {
+        transition: color 0.3s ease;
+        padding: 0px;
+        height: 30px;
+    }
+
+        .custom-back:hover {
+            color: coral;
+        }
+</style>
+
+<div class="container mt-5">
+    <header class="mb-4">
+        <div>
+            <h1 class="mb-0">СПИСОК</h1>
+            <h2>ЗАКАЗОВ</h2>
+        </div>
+        <a class="btn custom-back" asp-area="" asp-controller="Home" asp-action="Index">
+            Назад
+        </a>
+    </header>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Номер заказа</th>
+                <th>Город отправителя</th>
+                <th>Адрес отправителя</th>
+                <th>Город получателя</th>
+                <th>Адрес получателя</th>
+                <th>Вес груза</th>
+                <th>Мера веса</th>
+                <th>Дата забора груза</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr class="table-btn" onclick="window.location.href='@Url.Action("OrderDetails", new { id = order.ID })'">
+                    <td>@order.ID</td>
+                    <td>@order.SenderCity</td>
+                    <td>@order.SenderAddress</td>
+                    <td>@order.RecipientCity</td>
+                    <td>@order.RecipientAddress</td>
+                    <td>@order.Weight</td>
+                    <td>@order.Weight_Measure</td>
+                    <td>@order.PickupDate.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

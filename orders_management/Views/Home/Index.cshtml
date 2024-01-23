@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Test Task";
+}
+
+<style>
+    .custom-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.2em;
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, font-size 0.3s ease;
+        height: 300px;
+        width: 250px;
+        border: 1px solid lightgray;
+        border-radius: 20px;
+        background: white;
+        color: black;
+    }
+
+        .custom-btn img {
+            filter: invert(0%);
+            height: 80px;
+            width: 80px;
+            transition: filter 0.3s ease, height 0.3s ease, width 0.3s ease;
+        }
+
+        .custom-btn:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: coral;
+            color: white;
+            border: 0px solid lightgray;
+            font-size: 1.5em;
+        }
+
+            .custom-btn:hover img {
+                filter: invert(100%);
+                height: 100px;
+                width: 100px;
+            }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="container text-center">
+    <div class="btn-container">
+        <a class="btn custom-btn" asp-area="" asp-controller="Home" asp-action="Order">
+            <img src="./images/order.png" class="mb-3 mt-2"/>
+            Новый заказ
+        </a>
+        <a class="btn custom-btn" asp-area="" asp-controller="Home" asp-action="List" style="margin-left: 50px;">
+            <img src="/images/list.png" class="mb-3 mt-2" />
+            Список заказов
+        </a>
+    </div>
+</div>

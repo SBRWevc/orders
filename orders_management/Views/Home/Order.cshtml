@@ -1,0 +1,152 @@
+﻿@model test_task.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Новый заказ";
+}
+
+<style>
+    h1 {
+        color: coral;
+    }
+
+    .custom-container {
+        min-width: 400px;
+    }
+
+    .custom-btn {
+        border: 1px solid lightgray;
+        transition: box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border 0.3s ease;
+        padding: 5px;
+        height: 40px;
+    }
+
+        .custom-btn:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: coral;
+            color: white;
+            border: 1px solid coral;
+        }
+
+    .clear-weight {
+        border: 1px solid lightgray;
+    }
+
+    .custom-btn img {
+        filter: invert(0%);
+        height: 80%;
+        width: auto;
+        transition: filter 0.3s ease;
+        align-content: center;
+        vertical-align: middle;
+    }
+
+    .custom-btn:hover img {
+        filter: invert(100%);
+    }
+
+    .custom-back {
+        transition: color 0.3s ease;
+        padding: 0px;
+        height: 30px;
+    }
+
+        .custom-back:hover {
+            color: coral;
+        }
+
+    .custom-sel {
+        max-width: 54px;
+        text-align: center;
+    }
+</style>
+<script>
+    function clearInput(inputId) {
+        document.getElementById(inputId).value = '';
+        if (inputId === 'Weight') {
+            document.getElementById('Weight_Measure').value = 'г';
+        }
+    }
+</script>
+
+<div class="container mt-5 custom-container">
+    <header class="mb-4">
+        <div>
+            <h1 class="mb-0">НОВЫЙ</h1>
+            <h2>ЗАКАЗ</h2>
+        </div>
+        <a class="btn custom-back" asp-area="" asp-controller="Home" asp-action="Index">
+            Назад
+        </a>
+    </header>
+
+    <form asp-controller="Home" asp-action="Create" method="post" class="mx-auto">
+        <div class="form-group mt-2 mb-2">
+            <label asp-for="SenderCity" class="mb-1">Город отправителя:</label>
+            <div class="input-group">
+                <input asp-for="SenderCity" class="form-control custom-input" required pattern="[а-яА-ЯёЁ\s.,/\\]+" title="Используйте русский язык." />
+                <button type="button" class="btn custom-btn" onclick="clearInput('SenderCity')">
+                    <img src="/images/clear.png" />
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 mb-2">
+            <label asp-for="SenderAddress" class="mb-1">Адрес отправителя:</label>
+            <div class="input-group">
+                <input asp-for="SenderAddress" class="form-control" required pattern="[а-яА-ЯёЁ\s.,/\\]+" title="Используйте русский язык." />
+                <button type="button" class="btn custom-btn" onclick="clearInput('SenderAddress')">
+                    <img src="/images/clear.png" />
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 mb-2">
+            <label asp-for="RecipientCity" class="mb-1">Город получателя:</label>
+            <div class="input-group">
+                <input asp-for="RecipientCity" class="form-control" required pattern="[а-яА-ЯёЁ\s.,/\\]+" title="Используйте русский язык." />
+                <button type="button" class="btn custom-btn" onclick="clearInput('RecipientCity')">
+                    <img src="/images/clear.png" />
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 mb-2">
+            <label asp-for="RecipientAddress" class="mb-1">Адрес получателя:</label>
+            <div class="input-group">
+                <input asp-for="RecipientAddress" class="form-control" required pattern="[а-яА-ЯёЁ\s.,/\\]+" title="Используйте русский язык." />
+                <button type="button" class="btn custom-btn" onclick="clearInput('RecipientAddress')">
+                    <img src="/images/clear.png" />
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 mb-2">
+            <label asp-for="Weight" class="mb-1">Вес груза:</label>
+            <div class="input-group">
+                <input asp-for="Weight" type="number" class="form-control" required />
+                <select asp-for="Weight_Measure" class="form-control custom-sel" required>
+                    <option value="г">г</option>
+                    <option value="кг">кг</option>
+                    <option value="т">т</option>
+                </select>
+                <button type="button" class="btn custom-btn clear-weight" onclick="clearInput('Weight')">
+                    <img src="/images/clear.png" />
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 mb-2">
+            <label asp-for="PickupDate" class="mb-1">Дата забора груза:</label>
+            <div class="input-group">
+                <input asp-for="PickupDate" type="date" class="form-control" required />
+                <button type="button" class="btn custom-btn" onclick="clearInput('PickupDate')">
+                    <img src="/images/clear.png" />
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group mt-5 mb-2 text-center">
+            <button type="submit" class="btn rounded-3 custom-btn p-2">Создать заказ</button>            
+        </div>
+    </form>    
+</div>
