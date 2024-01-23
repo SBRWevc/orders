@@ -25,6 +25,7 @@ namespace test_task.Controllers
 
         public IActionResult List()
         {
+            _context.Database.EnsureCreated();
             var orders = _context.Orders.ToList();
             return View(orders);
         }
