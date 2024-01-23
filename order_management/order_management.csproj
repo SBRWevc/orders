@@ -10,7 +10,6 @@
     <Content Remove="wwwroot\images\laptop.png" />
     <Content Remove="wwwroot\images\list.png" />
     <Content Remove="wwwroot\images\order.png" />
-    <Content Remove="wwwroot\res\city.csv" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +26,6 @@
     <None Include="wwwroot\images\laptop.png" />
     <None Include="wwwroot\images\list.png" />
     <None Include="wwwroot\images\order.png" />
-    <None Include="wwwroot\res\city.csv" />
   </ItemGroup>
 
 </Project>
